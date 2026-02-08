@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Akreditasi | Profil</title>
+  <link rel="icon" href="unnamed.ico" type="image/png">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -13,6 +15,10 @@
       background-image: linear-gradient(to bottom, white, rgb(44, 246, 8), yellow);
       /* background-image: radial-gradient(ellipse at center, yellow, white 50%, green 100%); */
       color: #111827;
+      background-image: url(bglagi.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+    background-position: left center;
     }
 
     .top-nav {
@@ -122,20 +128,20 @@
       text-align: center;
       border-radius: 0px 0px 30px 30px;
     }
+
+    @keyframes glow01 {
+      0% { box-shadow: 0 0 5px rgb(214, 243, 2); }
+      50% { box-shadow: 0 0 20px #fafa02; }
+      100% { box-shadow: 0 0 5px rgb(242, 250, 1); }
+    }
+    .element {
+    animation: glow01 1.5s infinite;
+    }
     .profile {
       /* padding: 24px 16px 16px; */
       padding: 0px 0px 0px;
       text-align: center;
       border-bottom: 1px solid #ffffff;
-    }
-
-    @keyframes glow01 {
-      0% { box-shadow: 0 0 5px rgb(221, 249, 4); }
-      50% { box-shadow: 0 0 20px #fafa02; }
-      100% { box-shadow: 0 0 5px rgb(238, 246, 1); }
-    }
-    .element {
-    animation: glow01 1.5s infinite;
     }
     .avatar {
       width: 96px;
@@ -154,6 +160,38 @@
       margin: 0 auto 12px;
       animation: glow01 1.5s infinite;
     }
+
+@keyframes waveBounce {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(0); }
+  40%  { transform: translateY(-14px); }
+  50%  { transform: translateY(0); }
+  60%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.text-wave span {
+  display: inline-block;
+  animation: waveBounce 1.4s ease-in-out infinite;
+  color: purple;
+  text-shadow: 2px 2px 4px rgb(250, 248, 248);
+}
+
+.text-wave span:nth-child(1)  { animation-delay: 0s; }
+.text-wave span:nth-child(2)  { animation-delay: 0.1s; }
+.text-wave span:nth-child(3)  { animation-delay: 0.2s; }
+.text-wave span:nth-child(4)  { animation-delay: 0.3s; }
+.text-wave span:nth-child(5)  { animation-delay: 0.4s; }
+.text-wave span:nth-child(6)  { animation-delay: 0.5s; }
+.text-wave span:nth-child(7)  { animation-delay: 0.6s; }
+.text-wave span:nth-child(8)  { animation-delay: 0.7s; }
+.text-wave span:nth-child(9)  { animation-delay: 0.8s; }
+.text-wave span:nth-child(10) { animation-delay: 0.9s; }
+.text-wave span:nth-child(11) { animation-delay: 1s; }
+.text-wave span:nth-child(12) { animation-delay: 1.1s; }
+.text-wave span:nth-child(13) { animation-delay: 1.2s; }
+.text-wave span:nth-child(14) { animation-delay: 1.3s; }
+
     .name { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
     .bio { font-size: 14px; color: #6b7280; margin: 0; }
 
@@ -177,7 +215,14 @@
       transition: opacity 1s ease;
     }
     .slides img.active { opacity: 1; }
-
+    
+    .text-gradient {
+      background: linear-gradient(90deg, #00c6ff, #ff00d9, #00f2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
     .video-box { padding: 0 16px 16px; }
     .video-box iframe {
       width: 100%;
@@ -207,16 +252,6 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-    .lynk-item:nth-child(1) { animation-delay: 0s; }
-    .lynk-item:nth-child(2) { animation-delay: 1.3s; }
-    .lynk-item:nth-child(3) { animation-delay: 2.6s; }
-    .lynk-item:nth-child(4) { animation-delay: 3.9s; }
-    .lynk-item:nth-child(5) { animation-delay: 4.2s; }
-    .lynk-item:nth-child(6) { animation-delay: 5.5s; }
-    .lynk-item:nth-child(7) { animation-delay: 6.8s; }
-    .lynk-item:nth-child(8) { animation-delay: 7.1s; }
-    .lynk-item:nth-child(9) { animation-delay: 8.4s; }
-    .lynk-item:nth-child(10){ animation-delay: 9.7s; }
 /* Terapkan animasi pada elemen 
 .goyang {
   animation: shake 0.5s; /* Nama, durasi 
@@ -224,9 +259,21 @@
 } */
 
     .links { padding: 0 16px 16px; flex: 1; 
-              /* animation: shake 2.5s; /* Nama, durasi */
+              animation: shake 2.5s; /* Nama, durasi */
               /* animation-iteration-count: infinite; /* Ulangi terus menerus */
           }
+    .box-kotak {
+      /* background-color: #ffffff;
+        border-radius: 34px;
+          padding: 10px 6px 10px 6px; */
+        background-color: silver;
+        padding: 10px 2px 0.1px 2px;
+        margin-bottom: 12px;
+    }
+    .box-kotak:hover {
+      background-color: yellow;
+      transform: scale(1.06);
+    }
     .lynk-item {
       display: flex;
       align-items: center;
@@ -240,10 +287,7 @@
       text-decoration: none;
       color: #111827;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      /* animation-name: shake;
-      animation-duration: 1.6s;
-      animation-iteration-count: 1;
-      animation-fill-mode: both; */
+      animation-delay: 2s;
     }
     .lynk-item:hover {
       transform: scale(1.06);
@@ -269,7 +313,7 @@
       padding:10px 16px; border-radius:8px; color:#fff; font-size:14px;
       text-decoration:none; transition:.3s;
     }
-    .share-btns a:hover { transform:scale(1.1); }
+    .share-btns a:hover { transform:scale(1.1); text-decoration: underline;}
     .wa { background:#25D366; }
     .fb { background:#1877F2; }
     .ig { background:#E1306C; }
@@ -278,6 +322,7 @@
       background: #2e2c2c;
       text-align: center;
       font-size: 12px;
+      font-weight: bold;
       color: #ffffff;
       padding: 14px 8px 18px;
       border-top: 1px solid #e5e7eb;
@@ -318,6 +363,7 @@
     </div>
 
     <div class="profile"><br>
+      <h2 class="text-wave"><span>P</span><span>O</span><span>N</span><span>D</span><span>O</span><span>K</span>&nbsp;<span>P</span><span>E</span><span>S</span><span>A</span><span>N</span><span>T</span><span>R</span><span>E</span><span>N</span> </h2>
       <div class="avatar"></div>
       <div class="name">MTs Miftahul Khoir</div>
       <p class="bio">Madrasah Tsanawiyah · Akreditasi B, </p>
@@ -333,7 +379,7 @@
     </div>
 
     <div class="video-box">
-      <center><h1><u>DOKUMEN AKREDITASI 2026</u></h1>
+      <center><div class="text-gradient"><h1><u>DOKUMEN AKREDITASI 2026</u></h1></div>
       <p>Dokumen utama memiliki fungsinya masing-masing untuk menunjukkan kinerja satuan pendidikan dalam menyediakan layanan pendidikan yang berkualitas. </p>
       </center>
       <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" width="640" height="480" allowfullscreen></iframe> -->
@@ -349,29 +395,29 @@
       <a class="lynk-item" href="#"><div class="item-left"><div class="item-icon">📄</div><div class="item-text">Akreditasi</div></div><div class="item-arrow">›</div></a>
       <a class="lynk-item" href="#"><div class="item-left"><div class="item-icon">🏫</div><div class="item-text">Profil Madrasah</div></div><div class="item-arrow">›</div></a>
       <a class="lynk-item" href="#"><div class="item-left"><div class="item-icon">📁</div><div class="item-text">Dokumen</div></div><div class="item-arrow">›</div></a>
-      <a class="lynk-item" href="https://masmiftahulkhoir0016omben.sulugeng.my.id/auth#!/dataajar" target="_blank"><div class="item-left"><div class="item-icon"><img src="unnamed.png" width="100%"></div><div class="item-text">RDM Madrasah Aliyah (MA)</div></div><div class="item-arrow">›</div></a>
-      <a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="unnamed.png" width="100%"></div><div class="item-text">RDM Madrasah Tsanawiyah (MTs)</div></div><div class="item-arrow">›</div></a>
-      <a class="lynk-item" href="https://mi-miftahulkhoir.rdm-akg.com/" target="_blank"><div class="item-left"><div class="item-icon"><img src="unnamed.png" width="100%"></div><div class="item-text">RDM Madrasah Ibtidaiyah (MI)</div></div><div class="item-arrow">›</div></a>
+      <div class="box-kotak"><a class="lynk-item" href="https://masmiftahulkhoir0016omben.sulugeng.my.id/auth#!/dataajar" target="_blank"><div class="item-left"><div class="item-icon"><img src="unnamed.png" width="100%"></div><div class="item-text">RDM Madrasah Aliyah (MA)</div></div><div class="item-arrow">›</div></a></div>
+      <div class="box-kotak"><a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="unnamed.png" width="100%"></div><div class="item-text">RDM Madrasah Tsanawiyah (MTs)</div></div><div class="item-arrow">›</div></a></div>
+      <div class="box-kotak"><a class="lynk-item" href="https://mi-miftahulkhoir.rdm-akg.com/" target="_blank"><div class="item-left"><div class="item-icon"><img src="unnamed.png" width="100%"></div><div class="item-text">RDM Madrasah Ibtidaiyah (MI)</div></div><div class="item-arrow">›</div></a></div>
       <a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="official.png" width="100%"></div><div class="item-text">1. Kurikulum di tingkat satuan pendidikan</div></div><div class="item-arrow">›</div></a>
       <a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="official.png" width="100%"></div><div class="item-text">2. Rencana Kerja Tahunan (RKT)</div></div><div class="item-arrow">›</div></a>
       <a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="official.png" width="100%"></div><div class="item-text">3. Rencana kegiatan dan anggaran sekolah</div></div><div class="item-arrow">›</div></a>
       <a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="official.png" width="100%"></div><div class="item-text">4. Kalender Akademik</div></div><div class="item-arrow">›</div></a>
       <a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="official.png" width="100%"></div><div class="item-text">5. Contoh Perencaan Pembelajaran</div></div><div class="item-arrow">›</div></a>
-      <a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="official.png" width="100%"></div><div class="item-text">6. Foto/Video lingkungan belajar</div></div><div class="item-arrow">›</div></a>
+      <div class="box-kotak" style="background-color: #ffffff; padding: 10px 2px 0.1px 2px;"><a class="lynk-item" href="#" target="_blank"><div class="item-left"><div class="item-icon"><img src="official.png" width="100%"></div><div class="item-text">6. Foto/Video lingkungan belajar</div></div><div class="item-arrow">›</div></a></div>
     </div>
 
     <div class="share">
       <p>Bagikan halaman ini</p>
       <div class="share-btns">
         <a class="wa" href="https://wa.me/?text=https://miftahulkhoiromben-sketch.github.io/akreditasi/" target="_blank">WhatsApp</a>
-        <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank">Facebook</a>
+        <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://miftahulkhoiromben-sketch.github.io/akreditasi/" target="_blank">Facebook</a>
         <a class="ig" href="https://www.instagram.com/" target="_blank">Instagram</a>
       </div>
     </div>
 
-    <div class="footer01">CONTACT US <br>
+    <div class="footer01">CONTACT US :<br>
       Pandan - Omben - Sampang - Madura - Jawa Timur<hr><br>
-      <a href="https://maps.app.goo.gl/9DzhLzBrGZzu9pdP8" target="_blank">Titik kordinat</a>
+      <a href="https://maps.app.goo.gl/tE2kLHaaxhnakuFu6" target="_blank" style="color: #25D366;"> Titik kordinat </a>
     </div>
     <div class="footer">© 2026 MTs Miftahul Khoir · Semua dokumen resmi</div>
   </div>
