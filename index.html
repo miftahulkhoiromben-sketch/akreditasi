@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -336,6 +335,110 @@
       padding: 14px 8px 18px;
       border-top: 1px solid #e5e7eb;
     }
+
+/* karakter kepala badan */
+    .character {
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+  width: 120px;
+  z-index: 9999;
+}
+
+.character img {
+  position: absolute;
+  left: 0;
+}
+
+/* Kepala */
+.head {
+  position: absolute;
+  cursor: pointer;
+  width: 120px;
+  top: -17px;
+  left: 0;
+  right: 0;
+  animation: headMove 2.5s ease-in-out infinite;
+  z-index: 3;
+}
+
+/* Badan */
+.body {
+  width: 120px;
+  top: 60px;
+  animation: bodyFloat 2.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Animasi */
+@keyframes headMove {
+  0%,100% { transform: rotate(0deg); }
+  90% { transform: rotate(3deg); }
+}
+
+@keyframes bodyFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* BUBBLE */
+.chat-bubble {
+  position: absolute;
+  bottom: 60px;
+  left: -50px;
+  width: 160px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: none;
+  animation: bubbleUp 0.25s ease;
+  z-index: 10;
+}
+
+/* ekor bubble */
+.chat-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 40px;
+  border-width: 12px 10px 0;
+  border-style: solid;
+  border-color: #fff transparent transparent;
+}
+
+.chat-bubble p {
+  margin: 0 0 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.chat-bubble a {
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+  color: #333;
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+.chat-bubble a:hover {
+  background: #f2f2f2;
+}
+
+@keyframes bubbleUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.chat-bubble.show {
+  display: block;
+}
   </style>
 </head>
 <body>
@@ -451,5 +554,34 @@
       backdrop.classList.remove('show');
     });
   </script>
+
+    <!-- karakter kepala badan -->
+  <div class="character">
+  <img src="kepala laki.png" class="head" id="headBtn">
+  <img src="badan laki.png" class="body">
+
+    <div class="chat-bubble" id="bubbleMenu">
+    <p>Hai 👋 pilih menu ya</p>
+    <a href="#">💬 WhatsApp</a>
+    <a href="#">📷 Instagram</a>
+    <a href="#">🌐 Youtube</a>
+  </div>
+</div>
+
+<script>
+const head = document.getElementById("headBtn");
+const bubble = document.getElementById("bubbleMenu");
+
+head.addEventListener("click", () => {
+  bubble.classList.toggle("show");
+});
+
+// klik di luar → tutup
+document.addEventListener("click", (e) => {
+  if (!head.contains(e.target) && !bubble.contains(e.target)) {
+    bubble.classList.remove("show");
+  }
+});
+</script>
 </body>
 </html>
