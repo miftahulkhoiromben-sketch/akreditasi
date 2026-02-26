@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Layout</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+body{
+  /* background:#bef1ed; */
+  background:linear-gradient(160deg, #f8fafc,#22c59f,#eff1f0);
+}
+
+/* ===== LAYOUT ===== */
+.layout{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  min-height:100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  background:linear-gradient(160deg,#22c59f,#16a34a);
+  color:white;
+  padding:30px 20px;
+  transition:.35s ease;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar h2{
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+/* ===== RIGHT AREA ===== */
+.right{
+  display:flex;
+  flex-direction:column;
+}
+
+/* HEADER */
+.header{
+  height:70px;
+  background:rgba(255, 255, 255, 0.8);
+  display:flex;
+  align-items:center;
+  padding:0 30px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.burger{
+  font-size:22px;
+  margin-right:20px;
+  cursor:pointer;
+  display:none;
+  transition:.3s;
+}
+
+.burger:hover{
+  transform:scale(1.1);
+}
+
+/* CONTENT AREA */
+.content{
+  display:grid;
+  /* grid-template-columns:1fr 340px; */
+  grid-template-columns:1fr 50%;
+  gap:15px;
+  padding:15px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  transition:.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+}
+
+/* LIST STYLE */
+.card a{
+  display:block;
+  padding:14px 16px;
+  margin-bottom:12px;
+  background:#f8fafc;
+  border-radius:12px;
+  text-decoration:none;
+  color:#334155;
+  font-size:14px;
+  transition:.25s ease;
+}
+
+.card a:hover{
+  background:#91e4e6;
+  color:white;
+  transform:translateX(4px);
+}
+
+/* ===== OVERLAY ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:900;
+}
+
+.overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:900px){
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    position:fixed;
+    left:-260px;
+    top:0;
+    height:100%;
+    width:240px;
+    z-index:1000;
+    box-shadow:8px 0 30px rgba(0,0,0,0.2);
+  }
+
+  .sidebar.active{
+    left:0;
+  }
+
+  .burger{
+    display:block;
+  }
+
+  .content{
+    grid-template-columns:1fr;
+    padding:25px;
+  }
+
+}
+
+.list-item {
+  display: flex !important;
+  align-items: center;   /* bikin sejajar horizontal */
+  gap: 16px;
+  padding: 16px;
+  background: #eef1f4;
+  border-radius: 18px;
+  text-decoration: none;
+  margin-bottom: 16px;
+  transition: 0.25s ease;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  background: #bef1ed;
+  /* background: rgba(47, 255, 175, 0.682); */
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;   /* penting supaya tidak mengecil */
+}
+
+.icon img {
+  width: 24px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.desc {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.list-item:hover {
+  background: #a9cfb6;
+  transform: translateX(4px);
+  border: white solid;
+}
+
+.list-item:hover .title,
+.list-item:hover .desc {
+  color: black;
+}
+
+.back{
+  margin-right:10px;
+  font-size:40px;
+  cursor:pointer;
+}
+.back a{
+    text-decoration: none;
+}
+.back a:hover {
+      border: solid green 0px;
+      border-radius: 0px;
+      background: whitesmoke;
+      font-weight: bolder;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+  <div class="sidebar" id="sidebar">
+    <center><img src="unnamed.png" width="50%"></center><br>
+    <h2>PONDOK PESANTREN</h2>
+    <p style="margin-top:20px;opacity:.8;">MTsS Miftahul Khoir</p>
+  </div>
+
+  <div class="right">
+
+    <div class="header">
+      <div class="burger" onclick="openSidebar()">☰</div>
+      <span class="back"><a href="https://miftahulkhoiromben-sketch.github.io/akreditasi/#">←</a></span><h3>DESKRIPSI KINERJA ASESI (KDA)</h3>
+    </div>
+
+    <div class="content">
+
+      <div class="card">
+        <h2 style="color: green;">DESKRIPSI KINERJA ASESI (KDA)</h2><br>
+        By miftahul khoir<br><br>
+        <img src="logo-ban.png" width="100%" style="background-color: whitesmoke;"><br><br><br>
+        <img src="rusunawa.jpg" width="100%"><br><br>
+        <p>Akreditasi oleh <b>BAN-PDM</b> penting untuk menunjukkan bahwa satuan pendidikan telah memenuhi kelayakan berdasarkan penilaian mutu layanan pendidikan. Hasil akreditasi memberikan keyakinan kepada publik bahwa satuan pendidikan mampu memberikan pendidikan bermutu.</p><br>
+        <p>Informasi yang diberikan asesi, antara lain dokumentasi wajib, yaitu kurikulum, rencana kerja tahunan, rencana kegiatan dan anggaran, serta kalender akademik; Deskripsi kinerja asesi berisi penjelasan tentang kinerja dalam menyediakan layanan sesuai dengan butir yang diukur; Dokumentasi pendukung lainnya yang disampaikan kepada asesor saat pelaksanaan visitasi.</p><br>
+        <p>Link Video Kegiatan Visitasi Asesor : <a href="#" style="">(Lihat)</a></p><br>
+        <img src="pdm.webp" width="100%">
+      </div>
+
+<div class="card" style="background-color: #ffffff60; padding-left: 15px; padding-right: 15px;">
+  <h3 style="color:#64748b;">Content List</h3><br>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 1</div>
+      <div class="desc">Kinerja Pendidik</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 2</div>
+      <div class="desc">Kepemimpinan Sekolah</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 3</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 4</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 5</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 6</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 7</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 8</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 9</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 10</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 11</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 12</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 13</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+  <a href="#" class="list-item">
+    <div class="icon">📘</div>
+    <div class="text">
+      <div class="title">Komponen 14</div>
+      <div class="desc">Lingkungan Belajar</div>
+    </div>
+  </a>
+
+</div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function openSidebar(){
+  document.getElementById("sidebar").classList.add("active");
+  document.getElementById("overlay").classList.add("active");
+}
+
+function closeSidebar(){
+  document.getElementById("sidebar").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
