@@ -269,6 +269,35 @@ ul{
   background: #ddd;
   margin: 20px -25px; /* -25 = sama dengan padding card */
 }
+@keyframes glow01 {
+      0% { box-shadow: 0 0 5px rgb(214, 243, 2); }
+      50% { box-shadow: 0 0 20px #fafa02; }
+      100% { box-shadow: 0 0 5px rgb(242, 250, 1); }
+}
+.kotak-butir{
+      width: 100%;
+      height: 96px;
+      border-radius: 20px;
+      padding: 5px;
+      border: solid 10px;
+      border-image: linear-gradient(to right,#4facfe,white,#00f2fe) 1;
+      background-size: 100% 100%;
+      background: linear-gradient(135deg, #25eb50, #83078c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 32px;
+      font-weight: 500;
+      margin: 0 auto 12px;
+      animation: glow01 1.5s infinite;
+      text-align: center;
+}
+.kotak-butir a{
+    text-decoration: none;
+    color: white;
+}
+
 </style>
 </head>
 <body>
@@ -283,8 +312,8 @@ ul{
   <center><img src="unnamed.png" width="50%"></center><br><hr>
   <div class="sidebar-title"><h3>MTs Miftahul Khoir</h3></div><hr><br>
   <a href="index.html"> HOME</a><br>
-  <a href="dka.html"> DKA</a>
-
+  <a href="dka.html"> DKA</a><br><br><br><br><br>
+<div class="kotak-butir"> <a href="https://drive.google.com/drive/folders/15dMpIPymxN3iOn-n8l1CHjUYoiXT8h9l?usp=sharing" target="_blank">BUTIR 10</a> </div>
   
   <!-- <div class="logo">LYNK</div> -->
 </div>
