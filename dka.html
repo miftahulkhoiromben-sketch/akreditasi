@@ -278,7 +278,7 @@ body{
 <div class="card" style="background-color: #ffffff60; padding-left: 15px; padding-right: 15px;">
   <h3 style="color:#64748b;">Content List</h3><br>
 
-  <a href="dka01.html" class="list-item">
+  <a href="" class="list-item" id="list">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 1</div>
@@ -287,7 +287,7 @@ body{
     </div>
   </a>
 
-  <a href="dka02.html" class="list-item">
+  <a href="" class="list-item" id="list">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 2</div>
@@ -296,7 +296,7 @@ body{
     </div>
   </a>
 
-  <a href="dka03.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 3</div>
@@ -305,7 +305,7 @@ body{
     </div>
   </a>
 
-  <a href="dka04.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 4</div>
@@ -314,7 +314,7 @@ body{
     </div>
   </a>
 
-  <a href="dka05.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 5</div>
@@ -323,7 +323,7 @@ body{
     </div>
   </a>
 
-  <a href="dka06.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 6</div>
@@ -332,7 +332,7 @@ body{
     </div>
   </a>
 
-  <a href="dka07.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 7</div>
@@ -341,7 +341,7 @@ body{
     </div>
   </a>
 
-  <a href="dka08.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 8</div>
@@ -350,7 +350,7 @@ body{
     </div>
   </a>
 
-  <a href="dka09.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 9</div>
@@ -359,7 +359,7 @@ body{
     </div>
   </a>
 
-  <a href="dka10.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 10</div>
@@ -368,7 +368,7 @@ body{
     </div>
   </a>
 
-  <a href="dka11.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 11</div>
@@ -377,7 +377,7 @@ body{
     </div>
   </a>
 
-  <a href="dka12.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 12</div>
@@ -386,7 +386,7 @@ body{
     </div>
   </a>
 
-  <a href="dka13.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 13</div>
@@ -395,7 +395,7 @@ body{
     </div>
   </a>
 
-  <a href="dka14.html" class="list-item">
+  <a href="" class="list-item">
     <div class="icon">📄</div>
     <div class="text">
       <div class="title">Butir 14</div>
@@ -424,5 +424,16 @@ function closeSidebar(){
 }
 </script>
 
+<script>
+
+const items = document.querySelectorAll(".list-item");
+
+items.forEach((item, index) => {
+
+  item.href = "update_dka.html?butir=" + index;
+
+});
+
+</script>
 </body>
 </html>
