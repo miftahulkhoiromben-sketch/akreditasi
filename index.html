@@ -442,6 +442,55 @@
 .chat-bubble.show {
   display: block;
 }
+
+/* animasi daun */
+#leaves-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* overflow: hidden; */
+  z-index: 9999;
+}
+
+.leaf {
+  position: absolute;
+  top: -50px;
+  width: 30px;
+  height: 30px;
+  background-image: url('daun-star.png');
+  background-size: cover;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+/*
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}*/
+@keyframes fall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, 25vh) rotate(90deg);
+  }
+  50% {
+    transform: translate(-20px, 50vh) rotate(180deg);
+  }
+  75% {
+    transform: translate(20px, 75vh) rotate(270deg);
+  }
+  100% {
+    transform: translate(-20px, 110vh) rotate(360deg);
+  }
+}
   </style>
 </head>
 <body>
@@ -536,6 +585,8 @@
     <div class="footer">© 2026 MTs Miftahul Khoir · Semua dokumen resmi</div>
   </div>
 
+  <div id="leaves-container"></div>
+  
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const slides = document.querySelectorAll('.slides img');
@@ -594,6 +645,38 @@ document.addEventListener("click", (e) => {
     bubble.classList.remove("show");
   }
 });
+</script>
+
+<!-- script daun -->
+<script>
+const container = document.getElementById("leaves-container");
+
+function createLeaf() {
+  const leaf = document.createElement("div");
+  leaf.classList.add("leaf");
+
+  // posisi random
+  leaf.style.left = Math.random() * window.innerWidth + "px";
+
+  // ukuran random
+  const size = Math.random() * 20 + 20;
+  leaf.style.width = size + "px";
+  leaf.style.height = size + "px";
+
+  // durasi jatuh random
+  const duration = Math.random() * 5 + 5;
+  leaf.style.animationDuration = duration + "s";
+
+  container.appendChild(leaf);
+
+  // hapus setelah selesai
+  setTimeout(() => {
+    leaf.remove();
+  }, duration * 1000);
+}
+
+// spawn daun terus menerus
+setInterval(createLeaf, 800);
 </script>
 </body>
 </html>
