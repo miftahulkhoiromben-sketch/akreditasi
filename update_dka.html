@@ -298,6 +298,173 @@ ul{
     text-decoration: none;
     color: white;
 }
+
+/* ==============================
+   FLOATING NAVIGATION
+================================ */
+
+.floating-nav {
+    position: fixed;
+    right: 20px;
+    bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    z-index: 9999;
+}
+
+
+/* Tombol */
+.nav-btn {
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    color: white;
+
+    background: rgba(20, 140, 120, 0.85);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,0.18);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* Hover */
+.nav-btn:hover {
+    transform: scale(1.15) translateY(-3px);
+
+    background: rgba(10, 110, 95, 0.95);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+}
+
+
+/* Efek ketika tombol ditekan */
+.nav-btn:active {
+    transform: scale(0.92);
+}
+
+
+/* Animasi mengambang */
+.nav-btn {
+    animation: floating 3s ease-in-out infinite;
+}
+
+.nav-btn:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+
+@keyframes floating {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Tooltip */
+.nav-btn::after {
+
+    position: absolute;
+
+    right: 60px;
+
+    background: rgba(0,0,0,0.75);
+
+    color: white;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: translateX(10px);
+
+    transition: 0.25s ease;
+}
+
+
+.nav-btn:hover::after {
+
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+#btnUp::after {
+    content: "Ke atas";
+}
+
+
+#btnDown::after {
+    content: "Ke bawah";
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+
+    .floating-nav {
+        right: 12px;
+        bottom: 15px;
+        gap: 8px;
+    }
+
+    .nav-btn {
+        width: 43px;
+        height: 43px;
+        font-size: 19px;
+    }
+
+    .nav-btn::after {
+        display: none;
+    }
+
+}
 </style>
 </head>
 <body>
@@ -1260,6 +1427,117 @@ overlay.onclick = function(){
   sidebar.classList.remove("active");
   overlay.classList.remove("active");
 };
+</script>
+
+<!-- ==============================
+     FLOATING NAVIGATION
+================================ -->
+
+<div class="floating-nav">
+
+    <button
+        id="btnUp"
+        class="nav-btn"
+        aria-label="Ke atas">
+
+        ↑
+
+    </button>
+
+
+    <button
+        id="btnDown"
+        class="nav-btn"
+        aria-label="Langsung Ke bawah (Bukti Kinerja)">
+
+        ↓
+
+    </button>
+
+</div>
+
+<script>
+
+/* ==============================
+   TOMBOL KE ATAS
+================================ */
+
+document.getElementById("btnUp").addEventListener("click", function () {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+
+/* ==============================
+   TOMBOL KE BAWAH
+================================ */
+
+document.getElementById("btnDown").addEventListener("click", function () {
+
+    window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth"
+    });
+
+});
+
+
+/* ==============================
+   TOMBOL DINAMIS
+================================ */
+
+const btnUp = document.getElementById("btnUp");
+const btnDown = document.getElementById("btnDown");
+
+
+window.addEventListener("scroll", function () {
+
+    const scrollTop = window.scrollY;
+
+    const maxScroll =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+
+    /*
+       Tombol KE ATAS
+       Muncul setelah halaman digulir
+    */
+
+    if (scrollTop > 200) {
+
+        btnUp.style.opacity = "1";
+        btnUp.style.pointerEvents = "auto";
+
+    } else {
+
+        btnUp.style.opacity = "0.35";
+
+    }
+
+
+    /*
+       Tombol KE BAWAH
+       Redup ketika sudah berada
+       di bagian paling bawah
+    */
+
+    if (scrollTop >= maxScroll - 50) {
+
+        btnDown.style.opacity = "0.35";
+
+    } else {
+
+        btnDown.style.opacity = "1";
+
+    }
+
+});
+
 </script>
 </body>
 
